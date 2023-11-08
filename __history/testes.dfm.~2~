@@ -1,0 +1,17 @@
+object DataModule1: TDataModule1
+  OnCreate = DataModuleCreate
+  Height = 480
+  Width = 640
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=D:\dados\VULPES.FDB'
+      'Server=localhost'
+      'Port=3050'
+      'DriverID=FB'
+      'User_Name=sysdba'
+      'Password=masterkey')
+    LoginPrompt = False
+    Left = 304
+    Top = 224
+  end
+end

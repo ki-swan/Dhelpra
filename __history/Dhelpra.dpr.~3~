@@ -1,0 +1,17 @@
+program Dhelpra;
+
+uses
+  Vcl.Forms,
+  Dhelpra.Main.View in 'Dhelpra.Main.View.pas' {Form1},
+  Dhelpra.Connection in 'lib\Dhelpra.Connection.pas',
+  testes in 'testes.pas' {DataModule1: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.Run;
+end.

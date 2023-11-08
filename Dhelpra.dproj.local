@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/09/04 19:43:06.000.979,=D:\Embarcadero\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/09/04 20:04:40.000.358,D:\Embarcadero\Projects\Unit1.dfm=D:\Embarcadero\Projects\Dhelpra\Dhelpra.Main.View.dfm</Transaction>
+    <Transaction>2023/09/04 20:04:40.000.358,D:\Embarcadero\Projects\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\Dhelpra.Main.View.pas</Transaction>
+    <Transaction>2023/09/04 20:04:50.000.077,D:\Embarcadero\Projects\Project1.dproj=D:\Embarcadero\Projects\Dhelpra\Dhelpra.dproj</Transaction>
+    <Transaction>2023/09/04 20:04:55.000.012,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/09/04 20:05:20.000.176,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Connection.pas</Transaction>
+    <Transaction>2023/09/04 20:09:39.000.264,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/09/04 20:25:35.000.372,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/09/04 20:27:00.000.592,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\testes.pas</Transaction>
+    <Transaction>2023/09/04 20:27:00.000.592,D:\Embarcadero\Projects\Dhelpra\Unit1.dfm=D:\Embarcadero\Projects\Dhelpra\testes.dfm</Transaction>
+    <Transaction>2023/09/04 20:41:13.000.366,D:\Embarcadero\Projects\Dhelpra\testes.pas=</Transaction>
+    <Transaction>2023/09/04 20:50:30.000.459,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/09/04 21:00:12.000.315,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/10/30 20:53:47.000.772,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/10/30 20:55:12.000.817,D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Connection.pas=</Transaction>
+    <Transaction>2023/10/30 20:55:29.000.116,D:\Embarcadero\Projects\Dhelpra\Connection.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/10/30 20:55:29.000.116,D:\Embarcadero\Projects\Dhelpra\Connection.dfm=D:\Embarcadero\Projects\Dhelpra\Unit1.dfm</Transaction>
+    <Transaction>2023/10/30 20:55:40.000.215,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/10/30 20:55:49.000.028,D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Query.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/10/30 20:55:57.000.107,=D:\Embarcadero\Projects\Dhelpra\Unit2.pas</Transaction>
+    <Transaction>2023/10/30 20:56:06.000.892,=D:\Embarcadero\Projects\Dhelpra\Unit2.pas</Transaction>
+    <Transaction>2023/10/30 20:59:10.000.381,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/10/30 20:59:16.000.695,D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Connection.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/10/30 20:59:37.000.900,D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Connection.pas=</Transaction>
+    <Transaction>2023/11/07 18:49:18.000.170,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/11/07 18:49:46.000.811,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Connection.pas</Transaction>
+    <Transaction>2023/11/07 20:40:39.000.663,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/11/07 20:40:52.000.450,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Interfaces.pas</Transaction>
+  </Transactions>
+</BorlandProject>
