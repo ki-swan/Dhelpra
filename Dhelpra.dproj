@@ -107,9 +107,9 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="lib\Dhelpra.Query.pas"/>
-        <DCCReference Include="lib\Dhelpra.Connection.pas"/>
-        <DCCReference Include="lib\Dhelpra.Interfaces.pas"/>
+        <DCCReference Include="Src\Dhelpra.Connection.pas"/>
+        <DCCReference Include="Src\Dhelpra.Interfaces.pas"/>
+        <DCCReference Include="Src\Dhelpra.Query.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

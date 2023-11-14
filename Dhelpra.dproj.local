@@ -9,8 +9,8 @@
     <Transaction>2023/09/04 20:05:20.000.176,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Connection.pas</Transaction>
     <Transaction>2023/09/04 20:09:39.000.264,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
     <Transaction>2023/09/04 20:25:35.000.372,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/09/04 20:27:00.000.592,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\testes.pas</Transaction>
     <Transaction>2023/09/04 20:27:00.000.592,D:\Embarcadero\Projects\Dhelpra\Unit1.dfm=D:\Embarcadero\Projects\Dhelpra\testes.dfm</Transaction>
+    <Transaction>2023/09/04 20:27:00.000.592,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\testes.pas</Transaction>
     <Transaction>2023/09/04 20:41:13.000.366,D:\Embarcadero\Projects\Dhelpra\testes.pas=</Transaction>
     <Transaction>2023/09/04 20:50:30.000.459,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
     <Transaction>2023/09/04 21:00:12.000.315,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
@@ -29,5 +29,11 @@
     <Transaction>2023/11/07 18:49:46.000.811,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Connection.pas</Transaction>
     <Transaction>2023/11/07 20:40:39.000.663,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
     <Transaction>2023/11/07 20:40:52.000.450,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Interfaces.pas</Transaction>
+    <Transaction>2023/11/08 03:17:31.000.857,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/11/08 03:17:39.000.563,D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Model.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/11/08 04:18:57.000.196,D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Model.pas=</Transaction>
+    <Transaction>2023/11/14 18:51:38.708,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Connection.pas</Transaction>
+    <Transaction>2023/11/14 18:51:38.727,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Interfaces.pas</Transaction>
+    <Transaction>2023/11/14 18:51:38.744,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Query.pas</Transaction>
   </Transactions>
 </BorlandProject>

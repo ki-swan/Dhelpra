@@ -4,9 +4,9 @@ uses
   Vcl.Forms,
   Dhelpra.Main.View in 'Dhelpra.Main.View.pas' {Form1},
   Connection in 'Connection.pas' {DataModule1: TDataModule},
-  Dhelpra.Query in 'lib\Dhelpra.Query.pas',
-  Dhelpra.Connection in 'lib\Dhelpra.Connection.pas',
-  Dhelpra.Interfaces in 'lib\Dhelpra.Interfaces.pas';
+  Dhelpra.Connection in 'Src\Dhelpra.Connection.pas',
+  Dhelpra.Interfaces in 'Src\Dhelpra.Interfaces.pas',
+  Dhelpra.Query in 'Src\Dhelpra.Query.pas';
 
 {$R *.res}
 

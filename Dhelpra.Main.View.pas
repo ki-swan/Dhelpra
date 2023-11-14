@@ -51,16 +51,16 @@ begin
     else
     begin
       lConnection := TDhelpraConnection.New
-                                       .DriverID('FB')
-                                       .Server('D:\Embarcadero\Projects\Testes\SiteLoginExemplo\SiteLoginExemplo.fdb')
-                                       .Username('SYSDBA')
-                                       .Password('masterkey');
+                                       .DriverID('PG')
+                                       .Server('Vulpes')
+                                       .Username('postgres')
+                                       .Password('master');
     end;
     lJSON := lConnection.ToJSON;
     lText.Text := lJSON.ToString;
     lText.SaveToFile(ExtractFileDir(GetCurrentDir())+'/config.json');
     lQuery := TDhelpraQuery.New(lConnection);
-    lQuery.Open('select * from usuario');
+    lQuery.Open('select * from usuarios');
 //
 //    lQuery.SQL('select * from usuario where id = :id')
 //          .Param('id', 1)

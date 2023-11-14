@@ -12,4 +12,14 @@ object DataModule1: TDataModule1
     Left = 304
     Top = 224
   end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=Vulpes'
+      'User_Name=postgres'
+      'Password=master'
+      'DriverID=PG')
+    LoginPrompt = False
+    Left = 416
+    Top = 272
+  end
 end
