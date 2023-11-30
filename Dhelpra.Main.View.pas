@@ -39,28 +39,20 @@ var
   lText : TStringList;
 begin
   lText := TStringList.Create;
+  lConnection := TDhelpraConnection.New;
   try
-    if FileExists(ExtractFileDir(GetCurrentDir())+'/config.json') then
-    begin
-      lText.LoadFromFile(ExtractFileDir(GetCurrentDir())+'/config.json');
-      lJSON := TJSONObject.ParseJSONValue(lText.Text) as TJSONObject;
-      lConnection := TDhelpraConnection.New.FromJSON(lJSON);
-      if Assigned(lJSON) then
-        FreeAndNil(lJSON);
-    end
+    if lConnection.FileExist('config') then
+      lConnection.LoadFromFile('config')
     else
-    begin
-      lConnection := TDhelpraConnection.New
-                                       .DriverID('PG')
-                                       .Server('Vulpes')
-                                       .Username('postgres')
-                                       .Password('master');
-    end;
-    lJSON := lConnection.ToJSON;
-    lText.Text := lJSON.ToString;
-    lText.SaveToFile(ExtractFileDir(GetCurrentDir())+'/config.json');
+      lConnection.DriverID('PG')
+                 .Server('Vulpes')
+                 .Username('postgres')
+                 .Password('master');
+
+    lConnection.SaveToFile('config');
+
     lQuery := TDhelpraQuery.New(lConnection);
-    lQuery.Open('select * from usuarios');
+    lQuery.Open('select * from teste_empresas');
 //
 //    lQuery.SQL('select * from usuario where id = :id')
 //          .Param('id', 1)

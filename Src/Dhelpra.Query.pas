@@ -25,6 +25,7 @@ public
   
   function AssignConnection(aConnection: TFDConnection) : iDhelpraQuery; overload;
   function AssignConnection(aConnection: iDhelpraConnection) : iDhelpraQuery; overload;
+  function Connection : TFDCustomConnection;
   
   function ExecSQL(aSQL : string) : Integer; overload;    
   procedure ExecSQL; overload;
@@ -102,28 +103,19 @@ begin
   FQuery.Connection.Connected := True;
 end;
 
+function TDhelpraQuery.Connection: TFDCustomConnection;
+begin
+  Result := FQuery.Connection;
+end;
+
 function TDhelpraQuery.ExecSQL(aSQL: string): Integer;
 begin
-  try
-    FQuery.Connection.StartTransaction;
-    Result := FQuery.ExecSQL(aSQL);
-    FQuery.Connection.Commit;
-  finally
-    if FQuery.Connection.InTransaction then
-      FQuery.Connection.Rollback;
-  end;
+  Result := FQuery.ExecSQL(aSQL);
 end;
 
 procedure TDhelpraQuery.ExecSQL;
 begin
-  try
-    FQuery.Connection.StartTransaction;
-    FQuery.ExecSQL;
-    FQuery.Connection.Commit;
-  finally
-    if FQuery.Connection.InTransaction then
-      FQuery.Connection.Rollback;
-  end;
+  FQuery.ExecSQL;
 end;
 
 function TDhelpraQuery.Open(aSQL: String): iDhelpraQuery;
@@ -177,7 +169,9 @@ begin
           ftFloat : lJSON.AddPair(lFieldName.ToLower, FQuery.FieldByName(lFieldName).AsFloat);
           ftCurrency: lJSON.AddPair(lFieldName.ToLower, FQuery.FieldByName(lFieldName).AsCurrency);
           ftSingle: lJSON.AddPair(lFieldName.ToLower, FQuery.FieldByName(lFieldName).AsSingle);
-        end;  
+//          else
+//            lJSON.AddPair(lFieldName.ToLower, Ord(FQuery.Fields.FieldByName(lFieldName).DataType));
+        end;
       end;
       Result.Add(lJSON);
       FQuery.Next;
