@@ -3,7 +3,7 @@ unit Dhelpra.Connection;
 interface
 
 uses
-  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
@@ -15,6 +15,7 @@ TDhelpraConnection = class(TInterfacedObject, iDhelpraConnection)
 private
   FConnection: TFDConnection;
   FDriver : TFDPhysDriverLink;
+  FVendorHome : string;
 public
   constructor Create; reintroduce;
   destructor Destroy; override;
@@ -35,10 +36,16 @@ public
 
   function Connection : TFDConnection;
   function FromJSON(aValue : TJSONObject) : iDhelpraConnection;
-  function ToJSON : TJSONObject;
+  function ToJSON : TJSONObject; 
+  function SaveToFile(aFileName : String) : iDhelpraConnection;
+  function LoadFromFile(aFileName : String) : iDhelpraConnection;   
+  function FileExist(aFileName : String) : Boolean;
 end;
 
 implementation
+
+uses
+  System.SysUtils;
 
 { TDhelpraConnection }
 
@@ -102,13 +109,17 @@ begin
   Result := Self;
   if aValue = EmptyStr then raise Exception.Create('Parametro DriverID em branco');
   FConnection.Params.DriverID := aValue;
+  aValue := aValue.ToUpper;
   if aValue = 'PG' then
   begin
     FDriver := TFDPhysPgDriverLink.Create(nil);
   end;
-    
+
   if Assigned(FDriver) then
-    FDriver.VendorHome := GetCurrentDir+'/../..';
+    if not (FVendorHome = emptyStr) then
+       FDriver.VendorHome := FVendorHome
+    else
+      FDriver.VendorHome := GetCurrentDir;
 end;
 
 function TDhelpraConnection.DriverID: String;
@@ -151,6 +162,7 @@ begin
     Username(lUsername);
   aValue.TryGetValue<String>('password', lPassword);
     Password(lPassword);
+  aValue.TryGetValue<String>('VendorHome', FVendorHome);
   aValue.TryGetValue<String>('driverid', lDriverID);
     DriverID(lDriverID);
 end;
@@ -162,6 +174,47 @@ begin
         .AddPair('username', Username)
         .AddPair('password', Password)
         .AddPair('driverid', DriverID);
+end;
+
+function TDhelpraConnection.SaveToFile(aFileName: String): iDhelpraConnection;
+var
+  lFile : TStringList;
+  lJSON : TJSONObject;
+begin
+  Result := Self;
+  lFile := TStringList.Create;
+  lJSON := ToJSON;
+  try
+    lFile.Text := lJSON.ToString;
+    lFile.SaveToFile(GetCurrentDir()+'/'+aFileName+'.json');
+  finally
+    FreeAndNil(lFile);
+    FreeAndNil(lJSON);
+  end;
+end;
+
+function TDhelpraConnection.LoadFromFile(aFileName: String): iDhelpraConnection;   
+var
+  lFile : TStringList;
+  lJSON : TJSONObject;
+begin  
+  Result := Self;
+  lFile := TStringList.Create;
+  try
+    lFile.LoadFromFile(GetCurrentDir()+'/'+aFileName+'.json');
+    lJSON := TJSONObject.ParseJSONValue(lFile.Text) as TJSONObject;
+    FromJSON(lJSON);
+  finally                
+    if Assigned(lJSON) then
+      FreeAndNil(lJSON);
+    if Assigned(lFile) then
+      FreeAndNil(lFile);
+  end;
+end;     
+
+function TDhelpraConnection.FileExist(aFileName: String): Boolean;
+begin
+  Result := FileExists(GetCurrentDir()+'/'+aFileName+'.json');
 end;
 
 end.

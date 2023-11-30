@@ -25,12 +25,16 @@ iDhelpraConnection = interface
   function Connection : TFDConnection;
   function FromJSON(aValue : TJSONObject) : iDhelpraConnection;
   function ToJSON : TJSONObject;
+  function SaveToFile(aFileName : String) : iDhelpraConnection;
+  function LoadFromFile(aFileName : String) : iDhelpraConnection;
+  function FileExist(aFileName : String) : Boolean;
 end;
 
 iDhelpraQuery = interface
 ['{F920D9BC-CB3D-438F-8817-6BB260CDFC56}']
   function AssignConnection(aConnection: TFDConnection) : iDhelpraQuery; overload;
   function AssignConnection(aConnection: iDhelpraConnection) : iDhelpraQuery; overload;
+  function Connection : TFDCustomConnection;
 
   function ExecSQL(aSQL : string) : Integer; overload;
   procedure ExecSQL; overload;
