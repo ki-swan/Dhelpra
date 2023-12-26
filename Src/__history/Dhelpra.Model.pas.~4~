@@ -1,0 +1,64 @@
+unit Dhelpra.Model;
+
+interface
+
+uses
+  Dhelpra.Interfaces, Dhelpra.Entity.Interfaces;
+
+type
+
+TDhelpraModel = class(TInterfacedObject, iDhelpraModel)
+private
+
+public
+  constructor Create; reintroduce;
+  destructor Destroy; override;
+  class function New : iDhelpraModel;
+
+  function get : iDhelpraEntity;
+  function post(aEntity : iDhelpraEntity) : iDhelpraEntity;
+  function put(aEntity : iDhelpraEntity) : iDhelpraEntity;
+  function delete(aEntity : iDhelpraEntity) : iDhelpraModel;
+end;
+
+implementation
+
+{ TDhelpraModel }
+
+constructor TDhelpraModel.Create;
+begin
+
+end;
+
+function TDhelpraModel.delete(aEntity: iDhelpraEntity): iDhelpraModel;
+begin
+
+end;
+
+destructor TDhelpraModel.Destroy;
+begin
+
+  inherited;
+end;
+
+function TDhelpraModel.get: iDhelpraEntity;
+begin
+
+end;
+
+class function TDhelpraModel.New: iDhelpraModel;
+begin
+
+end;
+
+function TDhelpraModel.post(aEntity: iDhelpraEntity): iDhelpraEntity;
+begin
+
+end;
+
+function TDhelpraModel.put(aEntity: iDhelpraEntity): iDhelpraEntity;
+begin
+
+end;
+
+end.

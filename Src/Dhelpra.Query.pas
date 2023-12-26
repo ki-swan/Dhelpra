@@ -7,7 +7,8 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, 
-  System.JSON, Dhelpra.Connection, Dhelpra.Interfaces;
+  System.JSON, Dhelpra.Connection, Dhelpra.Interfaces,
+  Dhelpra.Entity.Interfaces;
 
 type
 
@@ -36,12 +37,13 @@ public
   function Param(aParamName : String; aParamValue : Variant) : iDhelpraQuery;
 
   function QueryToJSON : TJSONArray;
+  function QueryToEntity : iDhelpraTable;
 end;
 
 implementation
 
 uses
-  System.SysUtils, System.Variants, System.Classes;
+  System.SysUtils, System.Variants, System.Classes, Dhelpra.Table, Dhelpra.Entity, Dhelpra.Field;
 
 { TDhelpraQuery }
 
@@ -145,6 +147,58 @@ end;
 function TDhelpraQuery.Query: TFDQuery;
 begin
   Result := FQuery;
+end;
+
+function TDhelpraQuery.QueryToEntity: iDhelpraTable;
+var
+  i : Integer;
+  lFieldName : String;
+begin
+  Result := TDhelpraTable.New;
+  if FQuery.Exists or (not (FQuery.FieldCount = 0)) then
+  begin
+    FQuery.First;
+    while not FQuery.Eof do
+    begin
+      var lEntity := TDhelpraEntity.New;
+      for i := 0 to Pred(FQuery.Fields.Count) do
+      begin
+        lFieldName := FQuery.Fields.Fields[i].FieldName;
+        case FQuery.Fields.FieldByName(lFieldName).DataType of
+          ftSmallint, ftShortint, ftInteger:
+            lEntity.add(TDhelpraField.New.name(lFieldName.ToLower)
+                   .value(FQuery.FieldByName(lFieldName).AsInteger)
+                   .data_type(ftInteger));
+
+          ftString, ftLongWord, ftWord, ftBlob, ftMemo, ftWideString, ftWideMemo :
+            lEntity.add(TDhelpraField.New.name(lFieldName.ToLower)
+                   .value(FQuery.FieldByName(lFieldName).AsString)
+                   .data_type(ftString));
+
+          ftBoolean :
+            lEntity.add(TDhelpraField.New.name(lFieldName.ToLower)
+                   .value(FQuery.FieldByName(lFieldName).AsBoolean)
+                   .data_type(ftBoolean));
+
+          ftFloat :
+            lEntity.add(TDhelpraField.New.name(lFieldName.ToLower)
+                   .value(FQuery.FieldByName(lFieldName).AsFloat)
+                   .data_type(ftFloat));
+
+          ftCurrency:
+            lEntity.add(TDhelpraField.New.name(lFieldName.ToLower)
+                   .value(FQuery.FieldByName(lFieldName).AsCurrency)
+                   .data_type(ftCurrency));
+          ftSingle:
+            lEntity.add(TDhelpraField.New.name(lFieldName.ToLower)
+                   .value(FQuery.FieldByName(lFieldName).AsSingle)
+                   .data_type(ftSingle));
+        end;
+      end;
+      Result.Add(lEntity);
+      FQuery.Next;
+    end;
+  end;
 end;
 
 function TDhelpraQuery.QueryToJSON: TJSONArray;

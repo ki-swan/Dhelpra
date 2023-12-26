@@ -1,0 +1,56 @@
+unit Dhelpra.Entity.Interfaces;
+
+interface
+
+uses
+  Data.DB, System.JSON, System.Generics.Collections;
+
+type
+
+iDhelpraField = interface;
+
+iDhelpraEntity = interface
+['{5FEB32E9-282E-4954-9A95-CEC922496B0B}']
+  function name : string; overload;
+  function name(aValue : string) : iDhelpraEntity; overload;
+  function add(aField : iDhelpraField) : iDhelpraEntity;
+
+  function FieldByDisplayName(aName : string) : iDhelpraField;
+  function FieldByName(aName : string) : iDhelpraField;
+  function FieldExists(aName : string) : boolean;
+  function FieldByIndex(aIndex : integer) : iDhelpraField;
+  function FieldByJSONName(aName : string) : iDhelpraField;
+  function Fields : TList<iDhelpraField>;
+  function count : integer;
+
+  function isEmpty : boolean;
+  function toJSON : TJSONObject;
+  function fromJSON(aValue : TJSONObject) : iDhelpraEntity; overload;
+  function fromJSON(aValue : string) : iDhelpraEntity; overload;
+  function fromClone(aClone : iDhelpraEntity) : iDhelpraEntity;
+end;
+
+iDhelpraField = interface
+['{5AC400BE-670E-4039-9539-C34C3856269C}']
+  function name : String; overload;
+  function name(aValue : String) : iDhelpraField; overload;
+  function value : Variant; overload;
+  function value(aValue : Variant) : iDhelpraField; overload;
+
+  function data_type : TFieldType; overload;
+  function data_type(AValue : TFieldType) : iDhelpraField; overload;
+
+//  function foreingkey_table : string; overload;
+//  function foreingkey_table(aValue : string) : iDhelpraField; overload;
+//  function foreingkey_field : string; overload;
+//  function foreingkey_field(aValue : string) : iDhelpraField; overload;
+
+  function toJSONPair : TJSONPair;
+  function fromJSONPair(aJSONObject : TJSONPair) : iDhelpraField;
+
+  procedure clear;
+end;
+
+implementation
+
+end.

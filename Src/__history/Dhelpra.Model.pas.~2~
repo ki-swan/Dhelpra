@@ -1,0 +1,16 @@
+unit Dhelpra.Model;
+
+interface
+
+uses
+  Dhelpra.Interfaces;
+
+type
+
+TDhelpraModel = class(TInterfacedObject, iDhelpraModel)
+
+end;
+
+implementation
+
+end.

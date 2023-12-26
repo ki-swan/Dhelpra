@@ -3,7 +3,7 @@ unit Dhelpra.Interfaces;
 interface
 
 uses
-  System.JSON, FireDAC.Comp.Client;
+  System.JSON, FireDAC.Comp.Client, Dhelpra.Entity.Interfaces;
 
 type
 
@@ -45,15 +45,16 @@ iDhelpraQuery = interface
   function Param(aParamName : String; aParamValue : Variant) : iDhelpraQuery;
 
   function QueryToJSON : TJSONArray;
+  function QueryToEntity : iDhelpraTable;
 end;
 
-//iDhelpraModel = interface
-//['{D2EF02CF-94A3-42E2-B468-86E6C80ADF58}']
-//  function get(aUser : iUsers) : iDhelpraModel;
-//  function post(aUser : iUsers) : iDhelpraModel;
-//  function put(aUser : iUsers) : iDhelpraModel;
-//  function delete(aUser : iUsers) : iDhelpraModel;
-//end;
+iDhelpraModel = interface
+['{184E52B4-ACE3-44F7-9C67-36835AF886FE}']
+  function get : iDhelpraEntity;
+  function post(aEntity : iDhelpraEntity) : iDhelpraEntity;
+  function put(aEntity : iDhelpraEntity) : iDhelpraEntity;
+  function delete(aEntity : iDhelpraEntity) : iDhelpraModel;
+end;
 
 implementation
 

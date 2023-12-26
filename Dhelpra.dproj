@@ -110,6 +110,11 @@
         <DCCReference Include="Src\Dhelpra.Connection.pas"/>
         <DCCReference Include="Src\Dhelpra.Interfaces.pas"/>
         <DCCReference Include="Src\Dhelpra.Query.pas"/>
+        <DCCReference Include="Src\Dhelpra.Entity\Dhelpra.Entity.Interfaces.pas"/>
+        <DCCReference Include="Src\Dhelpra.Entity\Dhelpra.Field.pas"/>
+        <DCCReference Include="Src\Dhelpra.Entity\Dhelpra.Entity.pas"/>
+        <DCCReference Include="Src\Dhelpra.Entity\Dhelpra.Table.pas"/>
+        <DCCReference Include="Src\Dhelpra.Model.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

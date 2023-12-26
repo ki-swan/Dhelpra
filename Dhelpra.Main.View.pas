@@ -52,13 +52,13 @@ begin
     lConnection.SaveToFile('config');
 
     lQuery := TDhelpraQuery.New(lConnection);
-    lQuery.Open('select * from teste_empresas');
+    lQuery.Open('select * from usuarios');
 //
 //    lQuery.SQL('select * from usuario where id = :id')
 //          .Param('id', 1)
 //          .Open;
 
-    lQueryJSON := lQuery.QueryToJSON;
+    lQueryJSON := lQuery.QueryToEntity.ToJSON;
     Memo1.Text := lQueryJSON.ToString;
 
   finally
