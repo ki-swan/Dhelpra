@@ -16,8 +16,8 @@
     <Transaction>2023/09/04 21:00:12.000.315,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
     <Transaction>2023/10/30 20:53:47.000.772,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
     <Transaction>2023/10/30 20:55:12.000.817,D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Connection.pas=</Transaction>
-    <Transaction>2023/10/30 20:55:29.000.116,D:\Embarcadero\Projects\Dhelpra\Unit1.dfm=D:\Embarcadero\Projects\Dhelpra\Connection.dfm</Transaction>
     <Transaction>2023/10/30 20:55:29.000.116,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\Connection.pas</Transaction>
+    <Transaction>2023/10/30 20:55:29.000.116,D:\Embarcadero\Projects\Dhelpra\Unit1.dfm=D:\Embarcadero\Projects\Dhelpra\Connection.dfm</Transaction>
     <Transaction>2023/10/30 20:55:40.000.215,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
     <Transaction>2023/10/30 20:55:49.000.028,D:\Embarcadero\Projects\Dhelpra\Unit1.pas=D:\Embarcadero\Projects\Dhelpra\lib\Dhelpra.Query.pas</Transaction>
     <Transaction>2023/10/30 20:55:57.000.107,=D:\Embarcadero\Projects\Dhelpra\Unit2.pas</Transaction>
@@ -35,15 +35,40 @@
     <Transaction>2023/11/14 18:51:38.000.708,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Connection.pas</Transaction>
     <Transaction>2023/11/14 18:51:38.000.727,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Interfaces.pas</Transaction>
     <Transaction>2023/11/14 18:51:38.000.744,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Query.pas</Transaction>
-    <Transaction>2023/12/26 16:07:19.924,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/12/26 16:07:45.786,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entity.Interfaces.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/12/26 16:28:51.454,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/12/26 16:29:20.433,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Field.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/12/26 16:55:48.769,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/12/26 16:56:15.488,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entity.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/12/26 17:09:29.970,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/12/26 17:09:55.184,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Table.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/12/26 17:37:32.941,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
-    <Transaction>2023/12/26 17:38:01.188,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Model.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 16:07:19.000.924,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 16:07:45.000.786,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entity.Interfaces.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 16:28:51.000.454,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 16:29:20.000.433,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Field.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 16:55:48.000.769,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 16:56:15.000.488,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entity.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 17:09:29.000.970,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 17:09:55.000.184,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Table.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 17:37:32.000.941,=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 17:38:01.000.188,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Model.pas=D:\Embarcadero\Projects\Dhelpra\Unit1.pas</Transaction>
+    <Transaction>2023/12/28 13:26:08.000.740,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entitys.Interfaces.pas=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entity.Interfaces.pas</Transaction>
+    <Transaction>2023/12/28 13:49:51.000.967,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entitys.Interfaces.pas=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entity.Interfaces.pas</Transaction>
+    <Transaction>2023/12/28 13:56:48.000.626,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entity.Interfaces.pas=</Transaction>
+    <Transaction>2023/12/28 13:56:48.000.636,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Field.pas=</Transaction>
+    <Transaction>2023/12/28 13:56:48.000.636,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Entity.pas=</Transaction>
+    <Transaction>2023/12/28 13:56:48.000.637,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity\Dhelpra.Table.pas=</Transaction>
+    <Transaction>2023/12/28 13:57:00.000.249,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity.Interfaces.pas</Transaction>
+    <Transaction>2023/12/28 13:57:00.000.368,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Table.pas</Transaction>
+    <Transaction>2023/12/28 13:57:00.000.289,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Field.pas</Transaction>
+    <Transaction>2023/12/28 13:57:00.000.270,=D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity.pas</Transaction>
+    <Transaction>2023/12/28 14:00:03.000.443,D:\Embarcadero\Projects\Dhelpra\Src\Dhelpra.Entity.Interfaces.pas=</Transaction>
   </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Src"/>
+    <File Path="Src\Dhelpra.Interfaces.pas"/>
+    <File Path="Src\Dhelpra.Connection.pas"/>
+    <File Path="Src\Dhelpra.Query.pas"/>
+    <File Path="Src\Dhelpra.Model.pas"/>
+    <File Path="Src\Dhelpra.Field.pas"/>
+    <File Path="Src\Dhelpra.Entity.pas"/>
+    <File Path="Src\Dhelpra.Table.pas"/>
+    <File Path="Connection.pas"/>
+    <File Path="Connection.dfm"/>
+    <File Path="Dhelpra.Main.View.pas"/>
+    <File Path="Dhelpra.Main.View.dfm"/>
+  </ProjectSortOrder>
 </BorlandProject>

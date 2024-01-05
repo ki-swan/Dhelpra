@@ -3,7 +3,7 @@ unit Dhelpra.Model;
 interface
 
 uses
-  Dhelpra.Interfaces, Dhelpra.Entity.Interfaces;
+  Dhelpra.Interfaces;
 
 type
 

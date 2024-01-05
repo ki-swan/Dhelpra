@@ -3,9 +3,14 @@ unit Dhelpra.Interfaces;
 interface
 
 uses
-  System.JSON, FireDAC.Comp.Client, Dhelpra.Entity.Interfaces;
+  System.JSON, FireDAC.Comp.Client,
+  System.Generics.Collections, Data.DB;
 
 type
+
+iDhelpraField = interface;
+iDhelpraEntity = interface;
+iDhelpraTable = interface;
 
 iDhelpraConnection = interface
 ['{56158758-A267-4787-8A8A-C6A1CE456EE1}']
@@ -54,6 +59,57 @@ iDhelpraModel = interface
   function post(aEntity : iDhelpraEntity) : iDhelpraEntity;
   function put(aEntity : iDhelpraEntity) : iDhelpraEntity;
   function delete(aEntity : iDhelpraEntity) : iDhelpraModel;
+end;
+
+iDhelpraEntity = interface
+['{5FEB32E9-282E-4954-9A95-CEC922496B0B}']
+  function name : string; overload;
+  function name(aValue : string) : iDhelpraEntity; overload;
+  function add(aField : iDhelpraField) : iDhelpraEntity;
+
+  function FieldByName(aName : string) : iDhelpraField;
+  function FieldExists(aName : string) : boolean;
+  function FieldByIndex(aIndex : integer) : iDhelpraField;
+  function Fields : TList<iDhelpraField>;
+  function count : integer;
+
+  function isEmpty : boolean;
+  function clear : iDhelpraEntity;
+  function toJSON : TJSONObject;
+  function fromJSON(aValue : TJSONObject) : iDhelpraEntity;
+  function fromClone(aClone : iDhelpraEntity) : iDhelpraEntity;
+end;
+
+iDhelpraField = interface
+['{5AC400BE-670E-4039-9539-C34C3856269C}']
+  function name : String; overload;
+  function name(aValue : String) : iDhelpraField; overload;
+  function value : Variant; overload;
+  function value(aValue : Variant) : iDhelpraField; overload;
+
+  function data_type : TFieldType; overload;
+  function data_type(AValue : TFieldType) : iDhelpraField; overload;
+
+//  function foreingkey_table : string; overload;
+//  function foreingkey_table(aValue : string) : iDhelpraField; overload;
+//  function foreingkey_field : string; overload;
+//  function foreingkey_field(aValue : string) : iDhelpraField; overload;
+
+  function toJSON : TJSONPair;
+  function fromJSON(aJSONObject : TJSONPair) : iDhelpraField;
+
+  procedure clear;
+end;
+
+iDhelpraTable = interface
+['{C40C0B97-030B-4B7D-B3C5-3C82A16F0210}']
+  function add(aValue : iDhelpraEntity) : iDhelpraTable;
+  function table : TList<iDhelpraEntity>;
+  function items(aValue : Integer) : iDhelpraEntity;
+  function count : Integer;
+
+  function ToJSON : TJSONArray;
+  function FromJSON(aValue : TJSONArray) : iDhelpraTable;
 end;
 
 implementation

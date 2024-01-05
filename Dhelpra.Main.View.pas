@@ -25,15 +25,18 @@ var
 implementation
 
 uses
-  Dhelpra.Connection, System.JSON, Connection, Dhelpra.Query,
-  Dhelpra.Interfaces;
+  Dhelpra.Connection,
+  System.JSON,
+  Connection,
+  Dhelpra.Query,
+  Dhelpra.Interfaces, Dhelpra.Entity;
 
 {$R *.dfm}
 
 procedure TForm1.FormActivate(Sender: TObject);
 var
-  lQuery : iDhelpraQuery;
   lConnection : iDhelpraConnection;
+  lQuery : iDhelpraQuery;
   lJSON : TJSONObject;
   lQueryJSON : TJSONArray;
   lText : TStringList;
@@ -53,14 +56,13 @@ begin
 
     lQuery := TDhelpraQuery.New(lConnection);
     lQuery.Open('select * from usuarios');
-//
-//    lQuery.SQL('select * from usuario where id = :id')
+
+//    lQuery.SQL('select * from usuarios where id = :id')
 //          .Param('id', 1)
 //          .Open;
 
     lQueryJSON := lQuery.QueryToEntity.ToJSON;
     Memo1.Text := lQueryJSON.ToString;
-
   finally
     if Assigned(lQueryJSON) then
       FreeAndNil(lQueryJSON);

@@ -7,8 +7,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, 
-  System.JSON, Dhelpra.Connection, Dhelpra.Interfaces,
-  Dhelpra.Entity.Interfaces;
+  System.JSON, Dhelpra.Connection, Dhelpra.Interfaces;
 
 type
 
