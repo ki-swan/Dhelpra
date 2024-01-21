@@ -3,7 +3,6 @@ program Dhelpra;
 uses
   Vcl.Forms,
   Dhelpra.Main.View in 'Dhelpra.Main.View.pas' {Form1},
-  Connection in 'Connection.pas' {DataModule1: TDataModule},
   Dhelpra.Connection in 'Src\Dhelpra.Connection.pas',
   Dhelpra.Entity in 'Src\Dhelpra.Entity.pas',
   Dhelpra.Field in 'Src\Dhelpra.Field.pas',
@@ -20,6 +19,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.

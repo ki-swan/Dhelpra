@@ -5,8 +5,12 @@ uses
   Dhelpra.Main.View in 'Dhelpra.Main.View.pas' {Form1},
   Connection in 'Connection.pas' {DataModule1: TDataModule},
   Dhelpra.Connection in 'Src\Dhelpra.Connection.pas',
+  Dhelpra.Entity in 'Src\Dhelpra.Entity.pas',
+  Dhelpra.Field in 'Src\Dhelpra.Field.pas',
   Dhelpra.Interfaces in 'Src\Dhelpra.Interfaces.pas',
-  Dhelpra.Query in 'Src\Dhelpra.Query.pas';
+  Dhelpra.Model in 'Src\Dhelpra.Model.pas',
+  Dhelpra.Query in 'Src\Dhelpra.Query.pas',
+  Dhelpra.Table in 'Src\Dhelpra.Table.pas';
 
 {$R *.res}
 

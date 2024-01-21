@@ -50,9 +50,8 @@ begin
       lConnection.DriverID('PG')
                  .Server('Vulpes')
                  .Username('postgres')
-                 .Password('master');
-
-    lConnection.SaveToFile('config');
+                 .Password('master')
+                 .SaveToFile('config');
 
     lQuery := TDhelpraQuery.New(lConnection);
     lQuery.Open('select * from usuarios');

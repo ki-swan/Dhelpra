@@ -32,7 +32,8 @@ public
   function Open(aSQL : String) : iDhelpraQuery; overload;
   function Open : iDhelpraQuery; overload;
   function Query : TFDQuery;
-  function SQL(aSQL : String) : iDhelpraQuery;
+  function SQL(aSQL : String) : iDhelpraQuery; overload;
+  function SQL : String; overload;
   function Param(aParamName : String; aParamValue : Variant) : iDhelpraQuery;
 
   function QueryToJSON : TJSONArray;
@@ -141,6 +142,11 @@ function TDhelpraQuery.SQL(aSQL: String): iDhelpraQuery;
 begin
   Result := Self;
   FQuery.SQL.Text := aSQL;
+end;
+
+function TDhelpraQuery.SQL: String;
+begin
+  Result := FQuery.SQL.Text;
 end;
 
 function TDhelpraQuery.Query: TFDQuery;

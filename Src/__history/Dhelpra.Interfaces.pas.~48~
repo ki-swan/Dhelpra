@@ -46,8 +46,7 @@ iDhelpraQuery = interface
   function Open(aSQL : String) : iDhelpraQuery; overload;
   function Open : iDhelpraQuery; overload;
   function Query : TFDQuery;
-  function SQL(aSQL : String) : iDhelpraQuery; overload;
-  function SQL : String; overload;
+  function SQL(aSQL : String) : iDhelpraQuery;
   function Param(aParamName : String; aParamValue : Variant) : iDhelpraQuery;
 
   function QueryToJSON : TJSONArray;

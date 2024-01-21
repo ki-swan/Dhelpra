@@ -102,11 +102,6 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Connection.pas">
-            <Form>DataModule1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Src\Dhelpra.Connection.pas"/>
         <DCCReference Include="Src\Dhelpra.Entity.pas"/>
         <DCCReference Include="Src\Dhelpra.Field.pas"/>
