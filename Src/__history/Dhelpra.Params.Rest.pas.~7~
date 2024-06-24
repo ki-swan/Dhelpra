@@ -1,0 +1,93 @@
+unit Dhelpra.Params.Rest;
+
+interface
+
+uses
+  Dhelpra.Rest.Interfaces, Dhelpra.Interfaces;
+
+type
+
+TDhelpraParamsRest = class(TInterfacedObject, iDhelpraParamsRest)
+private
+  FHost : String;
+  FResorce : String;
+  FTimeout : Integer;
+  FToken : String;
+public
+  constructor Create; reintroduce;
+  destructor Destroy; override;
+  class function New : iDhelpraParamsRest;
+
+  function Host(aValue : String) : iDhelpraParams; overload;
+  function Host : String; overload;
+  function Resorce(aValue : String) : iDhelpraParamsRest; overload;
+  function Resorce : String; overload;
+  function Timeout(aValue : Integer) : iDhelpraParamsRest; overload;
+  function Timeout : Integer; overload;
+  function Token(aValue : String) : iDhelpraParamsRest; overload;
+  function Token : String; overload;
+end;
+
+implementation
+
+{ TDhelpraParamsRest }
+
+constructor TDhelpraParamsRest.Create;
+begin
+
+end;
+
+destructor TDhelpraParamsRest.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TDhelpraParamsRest.New: iDhelpraParamsRest;
+begin
+  Result := TDhelpraParamsRest.Create;
+end;
+
+function TDhelpraParamsRest.Host: String;
+begin
+  Result := FHost;
+end;
+
+function TDhelpraParamsRest.Host(aValue: String): iDhelpraParamsRest;
+begin
+  Result := Self;
+  if aValue = EmptyStr then
+
+end;
+
+function TDhelpraParamsRest.Resorce: String;
+begin
+
+end;
+
+function TDhelpraParamsRest.Resorce(aValue: String): iDhelpraParamsRest;
+begin
+
+end;
+
+function TDhelpraParamsRest.Timeout(aValue: Integer): iDhelpraParamsRest;
+begin
+
+end;
+
+function TDhelpraParamsRest.Timeout: Integer;
+begin
+
+end;
+
+function TDhelpraParamsRest.Token(aValue: String): iDhelpraParamsRest;
+begin
+
+end;
+
+function TDhelpraParamsRest.Token: String;
+begin
+
+end;
+
+end.

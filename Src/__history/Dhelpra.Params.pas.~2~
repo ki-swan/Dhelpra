@@ -1,0 +1,34 @@
+unit Dhelpra.Params;
+
+interface
+
+uses
+  Dhelpra.Interfaces;
+
+type
+
+TDhelpraParams = class abstract(TInterfacedObject, iDhelpraParams)
+protected
+  FHost : String;
+public
+  function Host(aValue : String) : iDhelpraParams; overload;
+  function Host : String; overload;
+end;
+
+implementation
+
+{ TDhelpraParams }
+
+{ TDhelpraParams }
+
+function TDhelpraParams.Host: String;
+begin
+
+end;
+
+function TDhelpraParams.Host(aValue: String): iDhelpraParams;
+begin
+
+end;
+
+end.

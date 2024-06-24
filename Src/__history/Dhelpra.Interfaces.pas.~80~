@@ -1,0 +1,67 @@
+unit Dhelpra.Interfaces;
+
+interface
+
+uses
+  System.JSON, Data.DB, System.Generics.Collections;
+
+type
+
+iDhelpraParams = interface
+['{D0A56240-05E0-4B26-80C1-143984FD88F7}']
+  function Host(aValue : String) : iDhelpraParams; overload;
+  function Host : String; overload;
+
+//  function FromJSON(aValue : TJSONObject) : iDhelpraParams;
+//  function ToJSON : TJSONObject;
+//  function SaveToFile(aFileName : String) : iDhelpraParams;
+//  function LoadFromFile(aFileName : String) : iDhelpraParams;
+//  function FileExist(aFileName : String) : Boolean;
+end;
+
+
+iDhelpraEntity = interface;
+iDhelpraField = interface
+['{8DC1DC6F-3597-4BC5-83EC-75D23B6DBD1F}']
+  function name : String; overload;
+  function name(aValue : String) : iDhelpraField; overload;
+//  function display_name : String; overload;
+//  function display_name(aValue : String) : iDhelpraField; overload;
+  function json_name : String; overload;
+  function json_name(aValue : String) : iDhelpraField; overload;
+  function value : Variant; overload;
+  function value(aValue : Variant) : iDhelpraField; overload;
+  function data_type : TFieldType; overload;
+  function data_type(AValue : TFieldType) : iDhelpraField; overload;
+  function required : Boolean; overload;
+  function required(AValue : Boolean) : iDhelpraField; overload;
+  function clear : iDhelpraEntity;
+
+  function toJSON(aJSONObject : TJSONObject) : iDhelpraField;
+  function fromJSON(aJSONObject : TJSONObject) : iDhelpraField;
+end;
+
+iDhelpraEntity = interface
+['{BA925A5F-3557-48AF-B388-B5EA80F433E9}']
+  function add(aField : iDhelpraField) : iDhelpraEntity;
+
+  function FieldByName(aName : string) : iDhelpraField;
+  function FieldByDisplayName(aName : string) : iDhelpraField;
+  function FieldByJsonName(aName : string) : iDhelpraField;
+  function FieldExists(aName : string) : boolean;
+  function FieldByIndex(aIndex : integer) : iDhelpraField;
+  function Fields : TList<iDhelpraField>;
+  function count : integer;
+
+  function isEmpty : boolean;
+  function toJSON : TJSONObject;
+  function fromJSON(aValue : TJSONObject) : iDhelpraEntity;
+
+  function NewEntity : iDhelpraEntity;
+  function Clone : iDhelpraEntity;
+end;
+
+
+implementation
+
+end.

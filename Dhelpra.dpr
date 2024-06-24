@@ -3,13 +3,12 @@ program Dhelpra;
 uses
   Vcl.Forms,
   Dhelpra.Main.View in 'Dhelpra.Main.View.pas' {Form1},
-  Dhelpra.Connection in 'Src\Dhelpra.Connection.pas',
-  Dhelpra.Entity in 'Src\Dhelpra.Entity.pas',
-  Dhelpra.Field in 'Src\Dhelpra.Field.pas',
   Dhelpra.Interfaces in 'Src\Dhelpra.Interfaces.pas',
-  Dhelpra.Model in 'Src\Dhelpra.Model.pas',
-  Dhelpra.Query in 'Src\Dhelpra.Query.pas',
-  Dhelpra.Table in 'Src\Dhelpra.Table.pas';
+  Dhelpra.Rest.Interfaces in 'Src\Dhelpra.Rest.Interfaces.pas',
+  Dhelpra.Params.Rest in 'Src\Dhelpra.Params.Rest.pas',
+  Dhelpra.Params in 'Src\Dhelpra.Params.pas',
+  Dhelpra.Field in 'Src\Dhelpra.Field.pas',
+  Dhelpra.Entity in 'Src\Dhelpra.Entity.pas';
 
 {$R *.res}
 

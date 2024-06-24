@@ -3,54 +3,50 @@ unit Dhelpra.Entity;
 interface
 
 uses
-  Dhelpra.Interfaces, System.JSON, System.Generics.Collections;
+  System.JSON,
+  Dhelpra.Interfaces,
+  System.Generics.Collections;
 
 type
 
 TDhelpraEntity = class(TInterfacedObject, iDhelpraEntity)
 private
-  FFields : TList<iDhelpraField>;
-  FName : string;
+  FPrimary : iDhelpraField;
+  FLista : TList<iDhelpraField>;
 public
   constructor Create; reintroduce;
   destructor Destroy; override;
   class function New : iDhelpraEntity;
 
-  function name : string; overload;
-  function name(aValue : string) : iDhelpraEntity; overload;
   function add(aField : iDhelpraField) : iDhelpraEntity;
 
   function FieldByName(aName : string) : iDhelpraField;
+  function FieldByDisplayName(aName : string) : iDhelpraField;
+  function FieldByJsonName(aName : string) : iDhelpraField;
   function FieldExists(aName : string) : boolean;
   function FieldByIndex(aIndex : integer) : iDhelpraField;
   function Fields : TList<iDhelpraField>;
   function count : integer;
 
   function isEmpty : boolean;
-  function clear : iDhelpraEntity;
   function toJSON : TJSONObject;
   function fromJSON(aValue : TJSONObject) : iDhelpraEntity;
-  function fromClone(aClone : iDhelpraEntity) : iDhelpraEntity;
+
+  function NewEntity : iDhelpraEntity;
 end;
 
 implementation
-
-uses
-  System.SysUtils, Dhelpra.Field;
 
 { TDhelpraEntity }
 
 constructor TDhelpraEntity.Create;
 begin
-
-  FFields := TList<iDhelpraField>.Create;
-  FName := '';
+  FLista := TList<iDhelpraField>.Create;
 end;
 
 destructor TDhelpraEntity.Destroy;
 begin
-  if Assigned(FFields) then
-    FreeAndNil(FFields);
+
   inherited;
 end;
 
@@ -59,101 +55,64 @@ begin
   Result := TDhelpraEntity.Create;
 end;
 
-function TDhelpraEntity.name(aValue: string): iDhelpraEntity;
-begin
-  Result := Self;
-  if aValue = EmptyStr then raise Exception.Create('name foi preenchido em branco');
-  FName := aValue;
-end;
-
-function TDhelpraEntity.name: string;
-begin
-  Result := FName;
-end;
-
 function TDhelpraEntity.add(aField: iDhelpraField): iDhelpraEntity;
 begin
-  Result := Self;
-  FFields.Add(aField);
+
 end;
 
 function TDhelpraEntity.count: integer;
 begin
-  Result := FFields.Count;
+
 end;
 
-function TDhelpraEntity.Fields: TList<iDhelpraField>;
+function TDhelpraEntity.FieldByDisplayName(aName: string): iDhelpraField;
 begin
-  Result := FFields;
+
 end;
 
 function TDhelpraEntity.FieldByIndex(aIndex: integer): iDhelpraField;
 begin
-  Result := FFields.Items[aIndex];
+
+end;
+
+function TDhelpraEntity.FieldByJsonName(aName: string): iDhelpraField;
+begin
+
 end;
 
 function TDhelpraEntity.FieldByName(aName: string): iDhelpraField;
-var
-  I: Integer;
 begin
-  for I := 0 to Pred(FFields.Count) do
-    if FFields.Items[i].name = aName then
-      begin
-        Result := FFields.Items[i];
-        break;
-      end;
+
 end;
 
 function TDhelpraEntity.FieldExists(aName: string): boolean;
-var
-  I: Integer;
 begin
-  Result := False;
-  for I := 0 to Pred(FFields.Count) do
-    if FFields.Items[i].name = aName then
-      begin
-        Result := True;
-        break;
-      end;
+
 end;
 
-function TDhelpraEntity.fromClone(aClone: iDhelpraEntity): iDhelpraEntity;
-var
-  I: Integer;
+function TDhelpraEntity.Fields: TList<iDhelpraField>;
 begin
-  Result := Self;
-  clear;
-  for I := 0 to Pred(aClone.count) do
-    FFields.Add(aClone.Fields.Items[i]);
+
 end;
+
 function TDhelpraEntity.fromJSON(aValue: TJSONObject): iDhelpraEntity;
-var
-  I: Integer;
 begin
-  Result := Self;
-  if not Assigned(aValue) then raise Exception.Create('Objeto JSON não informado!');
-  for I := 0 to Pred(aValue.Count) do
-    FFields.Add(TDhelpraField.New.fromJSON(aValue.Pairs[i]));
-end;
 
-function TDhelpraEntity.clear: iDhelpraEntity;
-begin
-  FName := '';
-  FFields.Clear;
 end;
 
 function TDhelpraEntity.isEmpty: boolean;
 begin
-  Result := FFields.Count = 0;
+
+end;
+
+function TDhelpraEntity.NewEntity: iDhelpraEntity;
+begin
+
 end;
 
 function TDhelpraEntity.toJSON: TJSONObject;
-var
-  I: Integer;
 begin
-  Result := TJSONObject.Create;
-  for I := 0 to Pred(FFields.Count) do
-    Result.AddPair(FFields.Items[i].toJSON);
+
 end;
 
 end.

@@ -1,0 +1,52 @@
+unit Dhelpra.Rest.Model;
+
+interface
+
+uses
+  Dhelpra.Interfaces, System.JSON, Dhelpra.Rest.Interfaces;
+
+type
+
+TDhelpraRestModel = class(TInterfacedObject, iDhelpraModel)
+private
+
+public
+  constructor Create(aParam : iDhelpraParamsRest); reintroduce;
+  destructor Destroy; override;
+  class function New(aParam : iDhelpraParamsRest) : iDhelpraModel;
+
+  function get : TJSONArray;
+  function post(aValue : TJSONObject) : TJSONObject;
+end;
+
+implementation
+
+{ TDhelpraRestModel }
+
+constructor TDhelpraRestModel.Create(aParam : iDhelpraParamsRest);
+begin
+
+end;
+
+destructor TDhelpraRestModel.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TDhelpraRestModel.New(aParam : iDhelpraParamsRest) : iDhelpraModel;
+begin
+  Result := TDhelpraRestModel.Create(aParam);
+end;
+
+function TDhelpraRestModel.get: TJSONArray;
+begin
+
+end;
+
+function TDhelpraRestModel.post(aValue: TJSONObject): TJSONObject;
+begin
+
+end;
+
+end.

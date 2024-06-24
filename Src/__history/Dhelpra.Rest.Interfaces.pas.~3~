@@ -1,0 +1,19 @@
+unit Dhelpra.Rest.Interfaces;
+
+interface
+
+uses
+  Dhelpra.Interfaces;
+
+type
+
+iDhelpraParamsRest = interface(iDhelpraParams)
+  function Resorce(aValue : String) : iDhelpraParams; overload;
+  function Resorce : String; overload;
+  function Timeout(aValue : Integer) : iDhelpraParams; overload;
+  function Timeout : Integer; overload;
+end;
+
+implementation
+
+end.

@@ -9,124 +9,223 @@ type
 
 TDhelpraField = class(TInterfacedObject, iDhelpraField)
 private
-  FName : String;
-  FValue : Variant;
-  FData_type : TFieldType;
+  [weak]
+  FParent : iDhelpraEntity;
+
+  Fname : String;
+  Fjson_name : String;
+  Fvalue : Variant;
+  Fdata_type : TFieldType;
+  Frequired : Boolean;
+  function validJSONPair(aJSONObject : TJSONObject) : Boolean;
 public
-  constructor Create; reintroduce;
+  constructor Create(aParent : iDhelpraEntity); reintroduce;
   destructor Destroy; override;
-  class function New : iDhelpraField;
+  class function New(aParent : iDhelpraEntity) : iDhelpraField;
 
   function name : String; overload;
   function name(aValue : String) : iDhelpraField; overload;
+  function json_name : String; overload;
+  function json_name(aValue : String) : iDhelpraField; overload;
   function value : Variant; overload;
   function value(aValue : Variant) : iDhelpraField; overload;
-
   function data_type : TFieldType; overload;
   function data_type(AValue : TFieldType) : iDhelpraField; overload;
+  function required : Boolean; overload;
+  function required(AValue : Boolean) : iDhelpraField; overload;
+  function clear : iDhelpraEntity;
 
-  procedure clear;
-
-  function toJSON : TJSONPair;
-  function fromJSON(aJSONObject : TJSONPair) : iDhelpraField;
+  function toJSON(aJSONObject : TJSONObject) : iDhelpraField;
+  function fromJSON(aJSONObject : TJSONObject) : iDhelpraField;
 end;
 
 implementation
 
 uses
-  System.SysUtils, System.Variants;
+  System.SysUtils,
+  System.Variants;
 
 { TDhelpraField }
 
-constructor TDhelpraField.Create;
+constructor TDhelpraField.Create(aParent : iDhelpraEntity);
 begin
-  clear;
+  FParent := aParent;
 end;
 
 destructor TDhelpraField.Destroy;
 begin
-
+  clear;
   inherited;
 end;
 
-class function TDhelpraField.New: iDhelpraField;
+class function TDhelpraField.New(aParent : iDhelpraEntity) : iDhelpraField;
 begin
-  Result := TDhelpraField.Create;
-end;
-
-function TDhelpraField.name(aValue: String): iDhelpraField;
-begin
-  Result := Self;
-  if aValue = EmptyStr then raise Exception.Create('name não foi preenchido em branco');
-  FName := aValue;
-end;
-
-function TDhelpraField.name: String;
-begin
-  Result := FName;
-end;
-
-function TDhelpraField.data_type: TFieldType;
-begin
-  Result := FData_type;
+  Result := TDhelpraField.Create(aParent);
 end;
 
 function TDhelpraField.data_type(AValue: TFieldType): iDhelpraField;
 begin
   Result := Self;
-  FData_type := AValue;
+  if AValue = ftUnknown then raise Exception.Create('Tipo de dado não informado');
+  Fdata_type := AValue;
+end;
+
+function TDhelpraField.data_type: TFieldType;
+begin
+  Result := Fdata_type;
+  if Result = ftUnknown then raise Exception.Create('Tipo de dado não informado');
+end;
+
+function TDhelpraField.json_name(aValue: String): iDhelpraField;
+begin
+  Result := Self;
+  if aValue = EmptyStr then raise Exception.Create('Nome da chave JSON não foi informado');
+  Fjson_name := aValue;
+end;
+
+function TDhelpraField.json_name: String;
+begin
+  Result := Fjson_name;
+  if Result = EmptyStr then raise Exception.Create('Nome da chave JSON não foi informado');
+end;
+
+function TDhelpraField.name: String;
+begin
+  Result := Fname;
+  if Result = EmptyStr then raise Exception.Create('Nome não foi informado');
+end;
+
+function TDhelpraField.name(aValue: String): iDhelpraField;
+begin
+  Result := Self;
+  if aValue = EmptyStr then raise Exception.Create('Nome não foi informado');
+  Fname := aValue;
+end;
+
+function TDhelpraField.required(AValue: Boolean): iDhelpraField;
+begin
+  Result := Self;
+  Frequired := AValue;
+end;
+
+function TDhelpraField.required: Boolean;
+begin
+  Result := Frequired;
 end;
 
 function TDhelpraField.value: Variant;
 begin
-  Result := FValue;
+  Result := Fvalue;
 end;
 
 function TDhelpraField.value(aValue: Variant): iDhelpraField;
 begin
   Result := Self;
-  FValue := aValue;
+  Fvalue := aValue;
 end;
 
-procedure TDhelpraField.clear;
+function TDhelpraField.validJSONPair(aJSONObject: TJSONObject): Boolean;
 begin
-  FName := '';
-  FValue := '';
-  FData_type := TFieldType.ftUnknown;
+  Result := False;
+//  if not Fjson_transfer then exit;
+
+  if not Assigned(aJSONObject) then raise Exception.Create('Objeto JSON não informado!');
+  Result := True;
 end;
 
-function TDhelpraField.fromJSON(aJSONObject: TJSONPair): iDhelpraField;
+function TDhelpraField.clear: iDhelpraEntity;
+begin
+  Result := Fparent;
+  Fvalue := Null;
+//  if Assigned(Fvalue_stream) then FreeAndNil(Fvalue_stream);
+end;
+
+function TDhelpraField.toJSON(aJSONObject : TJSONObject) : iDhelpraField;
 begin
   Result := Self;
-//  FName := aJSONObject.JsonString.Value;
-  { TODO 1 -oYuki : Implementar }
-  raise Exception.Create('Não implementado ainda');
-end;
 
-function TDhelpraField.toJSON: TJSONPair;
-begin
-  case FData_type of
-    ftString: Result := TJSONPair.Create(FName, VarToStr(FValue));
-    ftSmallint: raise Exception.Create('Não implementado ainda');
-    ftInteger: Result := TJSONPair.Create(FName, Integer(FValue));
-    ftWord: raise Exception.Create('Não implementado ainda');
-    ftBoolean: Result := TJSONPair.Create(FName, Boolean(FValue));
-    ftFloat: raise Exception.Create('Não implementado ainda');
-    ftCurrency: raise Exception.Create('Não implementado ainda');
-    ftDate: raise Exception.Create('Não implementado ainda');
-    ftTime: raise Exception.Create('Não implementado ainda');
-    ftDateTime: raise Exception.Create('Não implementado ainda');
-    ftBlob: raise Exception.Create('Não implementado ainda');
-    ftWideString: raise Exception.Create('Não implementado ainda');
-    ftLargeint: raise Exception.Create('Não implementado ainda');
-    ftTimeStamp: raise Exception.Create('Não implementado ainda');
-    ftLongWord: raise Exception.Create('Não implementado ainda');
-    ftShortint: raise Exception.Create('Não implementado ainda');
-    ftSingle: Result := TJSONPair.Create(FName, Single(FValue));
-    else
-      raise Exception.Create('Tipo desconhecido');
+  validJSONPair(aJSONObject);
+
+  if (VarIsNull(Fvalue)) and (not (Fdata_type in [ftBlob])) then
+  begin
+    aJSONObject.AddPair(json_name, TJSONNull.Create);
+    exit;
   end;
 
+  case Fdata_type of
+    ftUnknown: raise Exception.Create('Tipo de dado não informado');
+    ftString: aJSONObject.AddPair(json_name, VarToStr(value));
+    ftSmallint, ftInteger, ftLargeint, ftShortint :
+    begin
+      if VarIsStr(Fvalue) then
+        begin
+          if value = '' then
+            aJSONObject.AddPair(json_name, TJSONNull.Create)
+          else
+            aJSONObject.AddPair(json_name, TJSONNumber.Create(VarToStr(value)));
+          exit;
+        end;
+      var asInt : Integer := value;
+      aJSONObject.AddPair(json_name, TJSONNumber.Create(asInt));
+    end;
+    ftBoolean: aJSONObject.AddPair(json_name, TJSONBool.Create(value));
+    ftWord, ftCurrency, ftFloat, ftBCD, ftSingle, ftFMTBcd, ftLongWord :
+    begin
+      if VarIsStr(Fvalue) then
+        begin
+          if value = '' then
+            aJSONObject.AddPair(json_name, TJSONNull.Create)
+          else
+            aJSONObject.AddPair(json_name, TJSONNumber.Create(VarToStr(value)));
+          exit;
+        end;
+      var asFloat : Double := value;
+      aJSONObject.AddPair(json_name, TJSONNumber.Create(asFloat));
+    end;
+    ftDate : aJSONObject.AddPair(json_name, FormatDateTime('dd/mm/yyyy', value));
+    ftTime : aJSONObject.AddPair(json_name, FormatDateTime('hh:mm:ss', value));
+    ftDateTime, ftTimeStamp: aJSONObject.AddPair(json_name, FormatDateTime('dd/mm/yyyy', VarToDateTime(value)) + 'T' + FormatDateTime('hh:mm:ss', VarToDateTime(value)));
+    else raise Exception.Create('tipo de Field não suportado');
+  end;
+end;
+
+function TDhelpraField.fromJSON(aJSONObject : TJSONObject) : iDhelpraField;
+begin
+  Result := Self;
+//  if not Fjson_transfer then exit;
+  validJSONPair(aJSONObject);
+
+  var lValue : String;
+  if (not aJSONObject.TryGetValue(json_name, lValue)) then
+    begin
+      if (not required){ or (not json_transfer)} then
+        begin
+          clear;
+          Exit;
+        end;
+
+      raise Exception.Create('campo ' + Fname + ' não encontrado no JSON');
+    end;
+
+  if aJSONObject.GetValue(json_name).Null then
+    begin
+      clear;
+      exit;
+    end;
+
+  try
+    case data_type of
+      ftWideString, ftString, ftMemo, ftWideMemo: value(lValue);
+      ftSmallint, ftInteger, ftLargeint, ftShortint : value(StrToInt(lValue));
+      ftCurrency, ftWord, ftFloat, ftBCD, ftSingle, ftFMTBcd, ftLongWord : value(StrToFloat(lValue));
+      ftDate : value(StrToDate(lValue, TFormatSettings.Create('pt-BR')));
+      ftTime : value(StrToTime(lValue, TFormatSettings.Create('pt-BR')));
+      ftDateTime, ftTimeStamp: value(StrToDateTime(StringReplace(lValue, 'T', ' ', [rfReplaceAll]), TFormatSettings.Create('pt-BR')));
+      else raise ENotSupportedException.Create('tipo de Field não suportado');
+    end;
+  except on E: Exception do
+    raise Exception.Create('Valor do campo ' + name + ' inválido' + sLineBreak + ' Valor ' + lValue);
+  end;
 end;
 
 end.

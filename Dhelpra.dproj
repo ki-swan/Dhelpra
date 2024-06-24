@@ -102,13 +102,12 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Src\Dhelpra.Connection.pas"/>
-        <DCCReference Include="Src\Dhelpra.Entity.pas"/>
-        <DCCReference Include="Src\Dhelpra.Field.pas"/>
         <DCCReference Include="Src\Dhelpra.Interfaces.pas"/>
-        <DCCReference Include="Src\Dhelpra.Model.pas"/>
-        <DCCReference Include="Src\Dhelpra.Query.pas"/>
-        <DCCReference Include="Src\Dhelpra.Table.pas"/>
+        <DCCReference Include="Src\Dhelpra.Rest.Interfaces.pas"/>
+        <DCCReference Include="Src\Dhelpra.Params.Rest.pas"/>
+        <DCCReference Include="Src\Dhelpra.Params.pas"/>
+        <DCCReference Include="Src\Dhelpra.Field.pas"/>
+        <DCCReference Include="Src\Dhelpra.Entity.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
